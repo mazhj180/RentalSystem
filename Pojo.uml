@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>Pojo</OriginalElement>
+  <nodes>
+    <node x="637.0" y="1243.0">Pojo.User</node>
+    <node x="1550.5" y="-730.0">Pojo.Solve</node>
+    <node x="972.5" y="-730.0">Pojo.Houselist</node>
+    <node x="1158.5" y="-730.0">Pojo.Paid</node>
+    <node x="441.0" y="1243.0">Pojo.QueryVo</node>
+    <node x="28.0" y="1243.0">Pojo.Applyout</node>
+    <node x="1746.5" y="-730.0">Pojo.Topaid</node>
+    <node x="193.00000000000006" y="104.0">Pojo.UserExample.Criterion</node>
+    <node x="1354.5" y="-730.0">Pojo.Apply</node>
+    <node x="1942.5" y="-730.0">Pojo.Wrong</node>
+    <node x="201.5769230769231" y="1144.0">Pojo.UserExample.Criteria</node>
+    <node x="524.5" y="-730.0">Pojo.Hetong</node>
+    <node x="219.50000000000006" y="-730.0">Pojo.UserExample</node>
+    <node x="245.0" y="1243.0">Pojo.Checkout</node>
+    <node x="825.0" y="1243.0">Pojo.Schedule</node>
+    <node x="-174.0" y="1243.0">Pojo.Zulist</node>
+    <node x="-174.0" y="-368.0">Pojo.UserExample.GeneratedCriteria</node>
+    <node x="730.5" y="-730.0">Pojo.Userlist</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="Pojo.UserExample.Criteria" target="Pojo.UserExample.GeneratedCriteria" relationship="GENERALIZATION">
+      <point x="-26.0" y="-27.0" />
+      <point x="227.5769230769231" y="1118.0" />
+      <point x="-0.5" y="1118.0" />
+      <point x="0.0" y="730.0" />
+    </edge>
+    <edge source="Pojo.UserExample.Criteria" target="Pojo.UserExample" relationship="INNER_CLASS">
+      <point x="26.0" y="-27.0" />
+      <point x="279.5769230769231" y="1118.0" />
+      <point x="479.5" y="1118.0" />
+      <point x="479.5" y="-394.0" />
+      <point x="331.00000000000006" y="-394.0" />
+      <point x="0.0" y="155.0" />
+    </edge>
+    <edge source="Pojo.UserExample.GeneratedCriteria" target="Pojo.UserExample" relationship="INNER_CLASS">
+      <point x="0.0" y="-730.0" />
+      <point x="-0.5" y="-394.0" />
+      <point x="331.00000000000006" y="-394.0" />
+      <point x="0.0" y="155.0" />
+    </edge>
+    <edge source="Pojo.UserExample.Criterion" target="Pojo.UserExample" relationship="INNER_CLASS">
+      <point x="0.0" y="-258.0" />
+      <point x="0.0" y="155.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic" zoom="0.24884015183466893" showDependencies="false" x="960.0" y="445.5" />
+  <SelectedNodes />
+  <Categories>
+    <Category>Constructors</Category>
+    <Category>Fields</Category>
+    <Category>Inner Classes</Category>
+    <Category>Methods</Category>
+    <Category>Properties</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

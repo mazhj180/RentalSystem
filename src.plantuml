@@ -1,0 +1,867 @@
+@startuml
+
+!theme plain
+left to right direction
+skinparam linetype ortho
+
+class Apply {
+  + Apply(): 
+  - id: Integer
+  - address: String
+  - userlist_id: Integer
+  - house_id: String
+  - userlist: Userlist
+  - price: double
+  - area: double
+  - status: String
+  + toString(): String
+   userlist: Userlist
+   userlist_id: Integer
+   price: double
+   area: double
+   status: String
+   house_id: String
+   address: String
+   id: Integer
+}
+class ApplyController {
+  + ApplyController(): 
+  + findapplylist(Model, Integer, Integer): String
+  + refuseapply(String, Model, String): String
+  + applycheckuserlist(HttpSession, Model, Integer): String
+  + getmyapply(Model, HttpSession, Integer, Integer): String
+  + applychangehousestatus(HttpSession, Model, String): String
+}
+interface ApplyMapper << interface >> {
+  + deletebyhouse_id(String): void
+  + findallapplyout(): List<Apply>
+  + insertapply(Apply): void
+  + findbyhouse_id(String): Apply
+  + findapplylist(): List<Apply>
+  + updateapplyout(Applyout): void
+  + updateapplystatus(Apply): void
+}
+interface ApplyService << interface >> {
+  + insertapply(Apply): void
+  + refuseapply(Houselist, String): void
+  + findbyhouse_id(String): Apply
+  + deletebyhouse_id(String): void
+  + findapplylist(): List<Apply>
+  + findallapplyout(): List<Apply>
+}
+class ApplyServiceImpl {
+  + ApplyServiceImpl(): 
+  + insertapply(Apply): void
+  + findapplylist(): List<Apply>
+  + findbyhouse_id(String): Apply
+  + deletebyhouse_id(String): void
+  + refuseapply(Houselist, String): void
+  + findallapplyout(): List<Apply>
+}
+class Applyout {
+  + Applyout(): 
+  - id: Integer
+  - house_id: String
+  - address: String
+  - userlist_id: Integer
+  - status: String
+  - userlist: List<Userlist>
+   status: String
+   house_id: String
+   address: String
+   id: Integer
+   userlist_id: Integer
+   userlist: List<Userlist>
+}
+class ApplyoutController {
+  + ApplyoutController(): 
+  + refuseapplyout(Model, Integer): String
+  + findallapplyout(Model, Integer, Integer): String
+  + deleteapplyout(Model, Integer): String
+  + agreeapplyout(Model, Integer): String
+  + insertapplyout(String, Model): String
+  + getmyapplyout(Model, HttpSession, Integer, Integer): String
+}
+interface ApplyoutMapper << interface >> {
+  + insertapplyout(Applyout): void
+  + updateapplyout(Applyout): void
+  + updateapplyoutbyhouse(Applyout): void
+  + deleteapplyout(Integer): void
+  + findbyid(Integer): Applyout
+}
+interface ApplyoutService << interface >> {
+  + deleteapplyout(Integer): void
+  + updateapplyout(Applyout): void
+  + agreeapplyout(Integer): void
+  + insertapplyout(Zulist): void
+}
+class ApplyoutServiceImpl {
+  + ApplyoutServiceImpl(): 
+  + deleteapplyout(Integer): void
+  + insertapplyout(Zulist): void
+  + updateapplyout(Applyout): void
+  + agreeapplyout(Integer): void
+}
+class Checkout {
+  + Checkout(): 
+  - userlist_id: Integer
+  - userlist: Userlist
+  - house_id: String
+  - address: String
+  - id: Integer
+  - status: String
+   status: String
+   userlist: Userlist
+   house_id: String
+   address: String
+   id: Integer
+   userlist_id: Integer
+}
+class CheckoutController {
+  + CheckoutController(): 
+  + deletecheckout(Integer): String
+  + getmycheckout(Model, HttpSession, Integer, Integer): String
+  + getallcheckout(Model, Integer, Integer): String
+  + admindeletecheckout(Integer): String
+}
+interface CheckoutMapper << interface >> {
+  + deletecheckout(Integer): void
+  + getallcheckout(): List<Checkout>
+  + insertcheckout(Checkout): void
+}
+interface CheckoutService << interface >> {
+  + insertcheckout(Checkout): void
+  + getallcheckout(): List<Checkout>
+  + deletecheckout(Integer): void
+}
+class CheckoutServiceImpl {
+  + CheckoutServiceImpl(): 
+  + insertcheckout(Checkout): void
+  + deletecheckout(Integer): void
+  + getallcheckout(): List<Checkout>
+}
+class Criteria {
+  # Criteria(): 
+}
+class Criterion {
+  # Criterion(String, Object, Object): 
+  # Criterion(String, Object, Object, String): 
+  # Criterion(String, Object, String): 
+  # Criterion(String): 
+  # Criterion(String, Object): 
+  - singleValue: boolean
+  - listValue: boolean
+  - betweenValue: boolean
+  - condition: String
+  - noValue: boolean
+  - typeHandler: String
+  - secondValue: Object
+  - value: Object
+   listValue: boolean
+   value: Object
+   noValue: boolean
+   condition: String
+   secondValue: Object
+   betweenValue: boolean
+   typeHandler: String
+   singleValue: boolean
+}
+class GeneratedCriteria {
+  # GeneratedCriteria(): 
+  # criteria: List<Criterion>
+  + andIdIsNull(): Criteria
+  + andUsernameNotIn(List<String>): Criteria
+  + andPasswordNotEqualTo(String): Criteria
+  + andIdIn(List<Integer>): Criteria
+  + andUsernameLike(String): Criteria
+  + andTypeIsNull(): Criteria
+  + andIdBetween(Integer, Integer): Criteria
+  # addCriterion(String, Object, String): void
+  + andIdIsNotNull(): Criteria
+  + andPasswordLike(String): Criteria
+  + andUsernameIsNotNull(): Criteria
+  + andUsernameNotEqualTo(String): Criteria
+  + andTypeIsNotNull(): Criteria
+  + andTypeNotBetween(String, String): Criteria
+  + andTypeGreaterThan(String): Criteria
+  + andUsernameIn(List<String>): Criteria
+  + andIdGreaterThan(Integer): Criteria
+  + andPasswordLessThan(String): Criteria
+  + andPasswordIn(List<String>): Criteria
+  + andPasswordBetween(String, String): Criteria
+  + andPasswordNotBetween(String, String): Criteria
+  + andUsernameLessThanOrEqualTo(String): Criteria
+  + andUsernameLessThan(String): Criteria
+  + andTypeNotIn(List<String>): Criteria
+  + andTypeNotEqualTo(String): Criteria
+  + andIdLessThan(Integer): Criteria
+  # addCriterion(String): void
+  + andUsernameBetween(String, String): Criteria
+  + andTypeNotLike(String): Criteria
+  + andTypeLessThanOrEqualTo(String): Criteria
+  + andUsernameGreaterThanOrEqualTo(String): Criteria
+  + andUsernameIsNull(): Criteria
+  + andIdNotIn(List<Integer>): Criteria
+  + andPasswordNotLike(String): Criteria
+  + andPasswordGreaterThanOrEqualTo(String): Criteria
+  + andPasswordIsNotNull(): Criteria
+  + andPasswordLessThanOrEqualTo(String): Criteria
+  + andIdNotEqualTo(Integer): Criteria
+  + andTypeGreaterThanOrEqualTo(String): Criteria
+  + andTypeEqualTo(String): Criteria
+  + andTypeLessThan(String): Criteria
+  + andTypeIn(List<String>): Criteria
+  + andIdLessThanOrEqualTo(Integer): Criteria
+  + andUsernameGreaterThan(String): Criteria
+  + andTypeBetween(String, String): Criteria
+  + andTypeLike(String): Criteria
+  + andIdNotBetween(Integer, Integer): Criteria
+  # addCriterion(String, Object, Object, String): void
+  + andUsernameEqualTo(String): Criteria
+  + andPasswordIsNull(): Criteria
+  + andUsernameNotLike(String): Criteria
+  + andPasswordEqualTo(String): Criteria
+  + andUsernameNotBetween(String, String): Criteria
+  + andIdEqualTo(Integer): Criteria
+  + andPasswordNotIn(List<String>): Criteria
+  + andIdGreaterThanOrEqualTo(Integer): Criteria
+  + andPasswordGreaterThan(String): Criteria
+   allCriteria: List<Criterion>
+   criteria: List<Criterion>
+   valid: boolean
+}
+class Hetong {
+  + Hetong(): 
+  - zuke: String
+  - house_id: String
+  - todate: String
+  - chuzu_idcard: String
+  - zuke_idcard: String
+  - id: Integer
+  - fromdate: String
+  - address: String
+  - chuzu: String
+  - price: double
+  - payday: Integer
+   chuzu_idcard: String
+   zuke_idcard: String
+   zuke: String
+   price: double
+   house_id: String
+   address: String
+   payday: Integer
+   id: Integer
+   chuzu: String
+   todate: String
+   fromdate: String
+}
+class HetongController {
+  + HetongController(): 
+  + seehetong(String, Model): String
+  + deletehetong(String, Model): String
+  + zukeseehetong(String, Model): String
+  + changehetong(Hetong): String
+  + inserthetong(Model, Hetong): String
+  + updatehetong(String, Model): String
+}
+interface HetongMapper << interface >> {
+  + inserthetong(Hetong): void
+  + findhetong(String): Hetong
+  + updatehetong(Hetong): void
+  + deletehetong(String): void
+}
+interface HetongService << interface >> {
+  + findhetong(String): Hetong
+  + deletehetong(String): void
+  + updatehetong(Hetong): void
+  + inserthetong(Hetong): void
+}
+class HetongServiceImpl {
+  + HetongServiceImpl(): 
+  + findhetong(String): Hetong
+  + deletehetong(String): void
+  + updatehetong(Hetong): void
+  + inserthetong(Hetong): void
+}
+class Houselist {
+  + Houselist(): 
+  - address: String
+  - introduce: String
+  - area: double
+  - landlady: String
+  - id: Integer
+  - file: MultipartFile
+  - status: String
+  - houseid: String
+  - price: double
+  - img: String
+  + toString(): String
+   landlady: String
+   introduce: String
+   img: String
+   houseid: String
+   file: MultipartFile
+   price: double
+   area: double
+   status: String
+   address: String
+   id: Integer
+}
+interface HouselistMapper << interface >> {
+  + selects1(String, String): List<Houselist>
+  + findhouseidupdate(Houselist): Houselist
+  + updatehousestatus(Houselist): void
+  + updatestatus(Houselist): void
+  + selectLandladyAll(String): List<Houselist>
+  + selects2(String, String, String, String): List<Houselist>
+  + selects3(String, String, String, String): List<Houselist>
+  + selectAll(): List<Houselist>
+  + deletehousebyhouseid(String): void
+  + deletehouse(int): void
+  + findhouselistByVoCount(QueryVo): Integer
+  + inserthouse(Houselist): void
+  + findid(int): Houselist
+  + updatehouse(Houselist): void
+  + selects(String, String, String, String, String, String): List<Houselist>
+  + findhouseid(String): Houselist
+}
+interface HouselistService << interface >> {
+  + findhouseidupdate(Houselist): Houselist
+  + updatehousestatus(Houselist): void
+  + findhouseid(String): Houselist
+  + findid(int): Houselist
+  + selectLandladyAll(String): List<Houselist>
+  + deletehouse(int): void
+  + selects(String, String, String, String): List<Houselist>
+  + updatehouse(Houselist): void
+  + deletehousebyhouseid(String): void
+  + selectAll(): List<Houselist>
+  + inserthouse(Houselist): void
+}
+class HouselistServiceImpl {
+  + HouselistServiceImpl(): 
+  + findhouseid(String): Houselist
+  + deletehouse(int): void
+  + deletehousebyhouseid(String): void
+  + findid(int): Houselist
+  + selectAll(): List<Houselist>
+  + selects(String, String, String, String): List<Houselist>
+  + selectLandladyAll(String): List<Houselist>
+  + findhouseidupdate(Houselist): Houselist
+  + inserthouse(Houselist): void
+  + updatehouse(Houselist): void
+  + updatehousestatus(Houselist): void
+}
+class HoustlistController {
+  + HoustlistController(): 
+  + toaddhoust(Model): String
+  + changeHouseList(Houselist, Model): String
+  + deletehouse(Integer): String
+  + selects(Model, Integer, Integer, String, String, String, String): String
+  + findhouseidupdate(Houselist, Model): String
+  + houselist(Model, Integer, Integer): String
+  + toahouselist(): String
+  + findid(Integer, Model): String
+  + ahouselist(Model, Integer, Integer, HttpServletRequest): String
+  + addhouse(Model, Houselist, HttpServletRequest): String
+  + houseDetails(Integer, Model): String
+}
+class Paid {
+  + Paid(): 
+  - house_id: String
+  - userlist_id: Integer
+  - paydate: String
+  - name: String
+  - status: String
+  - id: Integer
+  - date: Date
+  - address: String
+  - price: Double
+   name: String
+   userlist_id: Integer
+   paydate: String
+   status: String
+   price: Double
+   house_id: String
+   address: String
+   id: Integer
+   date: Date
+}
+class PaidController {
+  + PaidController(): 
+  + zukedeletepaid(Integer): String
+  + addpaid(Integer, Model): String
+  + gotopay(Integer, Model): String
+  + topaidlist(Model, Integer, Integer): String
+  + findmypaid(HttpSession, Model, QueryVo, Integer, Integer): String
+  + deletepaid(Integer): String
+  + showaddpaid(Model, Integer, Integer): String
+  + mytopaidlist(Model, HttpSession, Integer, Integer): String
+  + selectall(Model, QueryVo, Integer, Integer): String
+  + inserttopaid(Topaid, Model): String
+}
+interface PaidMapper << interface >> {
+  + deletepaid(Integer): void
+  + selectall(QueryVo): List<Paid>
+  + selectsum(QueryVo): Double
+  + insertpaid(Paid): void
+}
+interface PaidService << interface >> {
+  + selectall(QueryVo): List<Paid>
+  + selectsum(QueryVo): Double
+  + findzuuserlist(): List<Zulist>
+  + findzukezulist(Integer): Zulist
+  + deletepaid(Integer): void
+}
+class PaidServiceImpl {
+  + PaidServiceImpl(): 
+  + selectall(QueryVo): List<Paid>
+  + selectsum(QueryVo): Double
+  + deletepaid(Integer): void
+  + findzuuserlist(): List<Zulist>
+  + findzukezulist(Integer): Zulist
+}
+class QueryVo {
+  + QueryVo(): 
+  - userlist_id: Integer
+  - fromdate: String
+  - todate: String
+  - zuname: String
+  + toString(): String
+   userlist_id: Integer
+   todate: String
+   zuname: String
+   fromdate: String
+}
+class Schedule {
+  + Schedule(): 
+  - date: String
+  - id: Integer
+  - content: String
+   id: Integer
+   content: String
+   date: String
+}
+class ScheduleController {
+  + ScheduleController(): 
+  + updateschedule(Schedule, Model): String
+  + selectAll(Model, Integer, Integer): String
+  + deleteschedule(Integer): String
+  + toinsert(Model): String
+  + toupdate(Model, Integer): String
+  + insertschedule(Schedule, Model): String
+}
+interface ScheduleMapper << interface >> {
+  + selectAll(): List<Schedule>
+  + deleteschedule(Integer): void
+  + updateschedule(Schedule): void
+  + insertschedule(Schedule): void
+  + selectbyid(Integer): Schedule
+}
+interface ScheduleService << interface >> {
+  + selectAll(): List<Schedule>
+  + deleteschedule(Integer): void
+  + insertschedule(Schedule): void
+  + updateschedule(Schedule): void
+  + selectbyid(Integer): Schedule
+}
+class ScheduleServiceImpl {
+  + ScheduleServiceImpl(): 
+  + updateschedule(Schedule): void
+  + insertschedule(Schedule): void
+  + deleteschedule(Integer): void
+  + selectbyid(Integer): Schedule
+  + selectAll(): List<Schedule>
+}
+class Solve {
+  + Solve(): 
+  - detail: String
+  - userlist_id: Integer
+  - status: String
+  - address: String
+  - date: Date
+  - id: Integer
+  - house_id: String
+  - name: String
+   name: String
+   detail: String
+   userlist_id: Integer
+   status: String
+   house_id: String
+   address: String
+   id: Integer
+   date: Date
+}
+interface SolveMapper << interface >> {
+  + selectcount(QueryVo): Integer
+  + deletesolve(Integer): void
+  + selectall(QueryVo): List<Solve>
+  + insertsolve(Solve): void
+}
+interface SolveService << interface >> {
+  + findbyid(Integer): Wrong
+  + deletesolve(Integer): void
+  + selectall(QueryVo): List<Solve>
+  + findwrong(QueryVo): List<Wrong>
+  + insertwrong(Wrong): void
+  + selectcount(QueryVo): Integer
+  + gotosolve(Integer, Solve): void
+}
+class SolveServiceImpl {
+  + SolveServiceImpl(): 
+  + selectcount(QueryVo): Integer
+  + findwrong(QueryVo): List<Wrong>
+  + findbyid(Integer): Wrong
+  + insertwrong(Wrong): void
+  + selectall(QueryVo): List<Solve>
+  + deletesolve(Integer): void
+  + gotosolve(Integer, Solve): void
+}
+class Topaid {
+  + Topaid(): 
+  - userlist_id: Integer
+  - name: String
+  - price: Double
+  - id: Integer
+  - date: Date
+  - status: String
+  - house_id: String
+  - address: String
+   name: String
+   userlist_id: Integer
+   status: String
+   price: Double
+   house_id: String
+   address: String
+   id: Integer
+   date: Date
+}
+interface TopaidMapper << interface >> {
+  + findtopaid(QueryVo): List<Topaid>
+  + inserttopaid(Topaid): void
+  + findbyid(Integer): Topaid
+  + deletetopaid(Integer): void
+}
+interface TopaidService << interface >> {
+  + inserttopaid(Topaid): void
+  + gotopay(Integer, Paid): void
+  + findbyid(Integer): Topaid
+  + findtopaid(QueryVo): List<Topaid>
+}
+class TopaidServiceImpl {
+  + TopaidServiceImpl(): 
+  + findtopaid(QueryVo): List<Topaid>
+  + inserttopaid(Topaid): void
+  + findbyid(Integer): Topaid
+  + gotopay(Integer, Paid): void
+}
+class User {
+  + User(): 
+  - id: Integer
+  - type: String
+  - password: String
+  - username: String
+  + toString(): String
+   password: String
+   type: String
+   username: String
+   id: Integer
+}
+class UserController {
+  + UserController(): 
+  + login(User, Model, HttpSession): String
+  + registerlist(): String
+  + toindex(Model): String
+  + register(User, Model): String
+  + atoindex(Model): String
+  + userList(): String
+}
+class UserExample {
+  + UserExample(): 
+  # oredCriteria: List<Criteria>
+  # distinct: boolean
+  # orderByClause: String
+  + or(): Criteria
+  + clear(): void
+  + createCriteria(): Criteria
+  + or(Criteria): void
+  # createCriteriaInternal(): Criteria
+   distinct: boolean
+   oredCriteria: List<Criteria>
+   orderByClause: String
+}
+interface UserMapper << interface >> {
+  + countByExample(UserExample): int
+  + selectByUserName(User): User
+  + selectByExample(UserExample): List<User>
+  + updateByPrimaryKey(User): int
+  + insert(User): int
+  + deleteByExample(UserExample): int
+  + updateByExampleSelective(User, UserExample): int
+  + deleteByPrimaryKey(Integer): int
+  + updateByExample(User, UserExample): int
+  + insertSelective(User): int
+  + selectByPrimaryKey(Integer): User
+  + selectByUser(User): User
+  + updateByPrimaryKeySelective(User): int
+}
+interface UserService << interface >> {
+  + login(User): User
+  + insertUser(User): boolean
+  + userList(): List<User>
+  + register(User): User
+}
+class UserServiceImpl {
+  + UserServiceImpl(): 
+  + insertUser(User): boolean
+  + userList(): List<User>
+  + login(User): User
+  + register(User): User
+}
+class Userlist {
+  + Userlist(): 
+  - phone: String
+  - apply: List<Apply>
+  - checkout: List<Checkout>
+  - user: User
+  - applyout: List<Applyout>
+  - id: Integer
+  - name: String
+  - user_id: Integer
+  - idcard: String
+  - zulist: List<Zulist>
+  + toString(): String
+   name: String
+   zulist: List<Zulist>
+   phone: String
+   applyout: List<Applyout>
+   idcard: String
+   apply: List<Apply>
+   checkout: List<Checkout>
+   id: Integer
+   user: User
+   user_id: Integer
+}
+class UserlistController {
+  + UserlistController(): 
+  + deleteuserlist(Model, Integer): String
+  + afindhasuserlist(HttpSession, Model): String
+  + checkuserlist(Model, Userlist, HttpSession): String
+  + findhasuserlist(HttpSession, Model): String
+  + checkuserlists(HttpServletRequest, Model): String
+  + findalluserlist(Model, Integer, Integer): String
+}
+interface UserlistMapper << interface >> {
+  + getmyapplyout(Integer): List<Userlist>
+  + checkuserlists(Integer): Userlist
+  + deleteuserlist(Integer): void
+  + deleteuser(Integer): void
+  + finduserlistupdate(Userlist): Userlist
+  + getmyapply(Integer): List<Userlist>
+  + findalluserlist(): List<Userlist>
+  + insertuserlist(Userlist): void
+  + getUserzuList(Integer): List<Userlist>
+  + checkuserlist(String): Userlist
+  + findhasuserlist(Integer): Userlist
+  + updateuserlist(Userlist): void
+  + findhasuserlistbyname(String): Userlist
+  + getmycheckout(Integer): List<Userlist>
+}
+interface UserlistService << interface >> {
+  + checkuserlist(String): Userlist
+  + getUserzuList(Integer): List<Userlist>
+  + updateuserlist(Userlist): void
+  + getmycheckout(Integer): List<Userlist>
+  + getmyapply(Integer): List<Userlist>
+  + findalluserlist(): List<Userlist>
+  + finduserlistupdate(Userlist): Userlist
+  + getmyapplyout(Integer): List<Userlist>
+  + insertuserlist(Userlist): void
+  + deleteuserlist(Integer): void
+  + findhasuserlist(Integer): Userlist
+  + checkuserlists(Integer): boolean
+}
+class UserlistServiceImpl {
+  + UserlistServiceImpl(): 
+  + checkuserlists(Integer): boolean
+  + deleteuserlist(Integer): void
+  + getUserzuList(Integer): List<Userlist>
+  + getmyapply(Integer): List<Userlist>
+  + insertuserlist(Userlist): void
+  + checkuserlist(String): Userlist
+  + updateuserlist(Userlist): void
+  + findhasuserlist(Integer): Userlist
+  + getmycheckout(Integer): List<Userlist>
+  + findalluserlist(): List<Userlist>
+  + finduserlistupdate(Userlist): Userlist
+  + getmyapplyout(Integer): List<Userlist>
+}
+class Usertest {
+  + Usertest(): 
+  + testFindUserAndSex(): void
+  + testFindUserById(): void
+  + setUp(): void
+}
+class Wrong {
+  + Wrong(): 
+  - date: Date
+  - userlist_id: Integer
+  - detail: String
+  - id: Integer
+  - name: String
+  - status: String
+  - house_id: String
+  - address: String
+   name: String
+   detail: String
+   userlist_id: Integer
+   status: String
+   house_id: String
+   address: String
+   id: Integer
+   date: Date
+}
+class WrongController {
+  + WrongController(): 
+  + wronglist(Model, Integer, Integer): String
+  + findmysolve(HttpSession, Model, QueryVo, Integer, Integer): String
+  + addwrong(Integer, Model): String
+  + mywronglist(Model, HttpSession, Integer, Integer): String
+  + zukedeletesolve(Integer): String
+  + gotosolve(Integer, Model): String
+  + selectall(Model, QueryVo, Integer, Integer): String
+  + showaddwrong(HttpSession, Model, Integer, Integer): String
+  + deletesolve(Integer): String
+  + insertwrong(Wrong, Model, HttpSession): String
+}
+interface WrongMapper << interface >> {
+  + insertwrong(Wrong): void
+  + findwrong(QueryVo): List<Wrong>
+  + findbyid(Integer): Wrong
+  + deletewrong(Integer): void
+}
+class Zulist {
+  + Zulist(): 
+  - zid: Integer
+  - contract_id: Integer
+  - price: Double
+  - userlist_id: Integer
+  - address: String
+  - house_id: String
+  - userlist: Userlist
+   userlist: Userlist
+   userlist_id: Integer
+   price: Double
+   house_id: String
+   address: String
+   contract_id: Integer
+   zid: Integer
+}
+class ZulistController {
+  + ZulistController(): 
+  + myzulist(Model, HttpSession, Integer, Integer): String
+  + toaddhetong(Model, String): String
+  + findzulist(Model, Integer, Integer): String
+}
+interface ZulistMapper << interface >> {
+  + findzuuserlist(): List<Zulist>
+  + deletezulist(String): void
+  + findzulistbyuid(Integer): List<Zulist>
+  + findzulist(String): Zulist
+  + insertzulist(Zulist): void
+  + findzukezulist(Integer): Zulist
+}
+interface ZulistService << interface >> {
+  + findzulist(String): Zulist
+  + findzulistbyuid(Integer): List<Zulist>
+  + deletezulist(String): void
+  + findzuuserlist(): List<Zulist>
+  + insertzulist(Zulist): void
+}
+class ZulistServiceImpl {
+  + ZulistServiceImpl(): 
+  + findzulist(String): Zulist
+  + deletezulist(String): void
+  + findzulistbyuid(Integer): List<Zulist>
+  + insertzulist(Zulist): void
+  + findzuuserlist(): List<Zulist>
+}
+
+ApplyServiceImpl      -[#008200,dashed]-^  ApplyService         
+ApplyoutServiceImpl   -[#008200,dashed]-^  ApplyoutService      
+CheckoutServiceImpl   -[#008200,dashed]-^  CheckoutService      
+Criteria              -[#000082,plain]-^  GeneratedCriteria    
+Criteria              +-[#820000,plain]-  UserExample          
+Criterion             +-[#820000,plain]-  UserExample          
+GeneratedCriteria     +-[#820000,plain]-  UserExample          
+HetongServiceImpl     -[#008200,dashed]-^  HetongService        
+HouselistServiceImpl  -[#008200,dashed]-^  HouselistService     
+PaidServiceImpl       -[#008200,dashed]-^  PaidService          
+ScheduleServiceImpl   -[#008200,dashed]-^  ScheduleService      
+SolveServiceImpl      -[#008200,dashed]-^  SolveService         
+TopaidServiceImpl     -[#008200,dashed]-^  TopaidService        
+UserServiceImpl       -[#008200,dashed]-^  UserService          
+UserlistServiceImpl   -[#008200,dashed]-^  UserlistService      
+ZulistServiceImpl     -[#008200,dashed]-^  ZulistService
+
+ApplyoutServiceImpl o-- HetongMapper
+ApplyoutServiceImpl o-- HouselistMapper
+ApplyoutServiceImpl o-- CheckoutMapper
+ApplyoutServiceImpl o-- ApplyoutMapper
+ApplyoutServiceImpl o-- ZulistMapper
+ApplyServiceImpl o-- ApplyMapper
+ApplyServiceImpl o-- HouselistMapper
+ApplyServiceImpl o-- UserlistMapper
+CheckoutServiceImpl o-- CheckoutMapper
+HetongServiceImpl o-- HetongMapper
+HouselistServiceImpl o-- HouselistMapper
+PaidServiceImpl o-- PaidMapper
+PaidServiceImpl o-- ZulistMapper
+ScheduleServiceImpl o-- ScheduleMapper
+SolveServiceImpl o-- SolveMapper
+SolveServiceImpl o-- WrongMapper
+TopaidServiceImpl o-- TopaidMapper
+TopaidServiceImpl o-- PaidMapper
+UserlistServiceImpl o-- UserlistMapper
+UserServiceImpl o-- UserMapper
+ZulistServiceImpl o-- ZulistMapper
+
+ApplyoutController o-- HetongService
+ApplyoutController o-- HouselistService
+ApplyoutController o-- CheckoutService
+ApplyoutController o-- ApplyoutService
+ApplyoutController o-- ZulistService
+ApplyController o-- ApplyService
+ApplyController o-- HouselistService
+ApplyController o-- UserlistService
+CheckoutController o-- CheckoutService
+HetongController o-- HetongService
+HouselistController o-- HouselistService
+PaidController o-- PaidService
+PaidController o-- ZulistService
+ScheduleController o-- ScheduleService
+UserlistController o-- UserlistService
+ZulistController o-- ZulistService
+WrongController o-- SolveService
+WrongController o-- UserlistService
+WrongController o-- PaidService
+WrongController o-- ZulistService
+UserController o-- UserService
+
+ApplyMapper ..> Apply
+ApplyoutMapper ..> Applyout
+CheckoutMapper ..> Checkout
+HetongMapper ..> Hetong
+HouselistMapper ..> Houselist
+HouselistMapper ..> QueryVo
+PaidMapper ..> Paid
+ScheduleMapper ..> Schedule
+SolveMapper ..> Solve
+TopaidMapper ..> Topaid
+UserlistMapper ..> Userlist
+UserMapper ..> User
+WrongMapper ..> Wrong
+ZulistMapper ..> Zulist
+
+
+@enduml

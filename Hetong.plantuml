@@ -1,0 +1,367 @@
+@startuml
+
+!theme plain
+top to bottom direction
+skinparam linetype ortho
+
+class Apply {
+  + Apply(): 
+  - status: String
+  - address: String
+  - id: Integer
+  - userlist: Userlist
+  - house_id: String
+  - price: double
+  - area: double
+  - userlist_id: Integer
+  + toString(): String
+   area: double
+   userlist: Userlist
+   userlist_id: Integer
+   price: double
+   status: String
+   house_id: String
+   address: String
+   id: Integer
+}
+class Applyout {
+  + Applyout(): 
+  - address: String
+  - status: String
+  - id: Integer
+  - house_id: String
+  - userlist: List<Userlist>
+  - userlist_id: Integer
+   status: String
+   house_id: String
+   address: String
+   id: Integer
+   userlist_id: Integer
+   userlist: List<Userlist>
+}
+class Checkout {
+  + Checkout(): 
+  - address: String
+  - userlist_id: Integer
+  - userlist: Userlist
+  - house_id: String
+  - id: Integer
+  - status: String
+   status: String
+   userlist: Userlist
+   house_id: String
+   address: String
+   id: Integer
+   userlist_id: Integer
+}
+class Criteria {
+  # Criteria(): 
+}
+class Criterion {
+  # Criterion(String, Object, Object): 
+  # Criterion(String): 
+  # Criterion(String, Object, Object, String): 
+  # Criterion(String, Object): 
+  # Criterion(String, Object, String): 
+  - value: Object
+  - secondValue: Object
+  - singleValue: boolean
+  - betweenValue: boolean
+  - noValue: boolean
+  - listValue: boolean
+  - typeHandler: String
+  - condition: String
+   noValue: boolean
+   value: Object
+   condition: String
+   secondValue: Object
+   singleValue: boolean
+   betweenValue: boolean
+   listValue: boolean
+   typeHandler: String
+}
+class GeneratedCriteria {
+  # GeneratedCriteria(): 
+  # criteria: List<Criterion>
+  + andIdLessThan(Integer): Criteria
+  + andUsernameBetween(String, String): Criteria
+  + andUsernameNotLike(String): Criteria
+  + andIdIn(List<Integer>): Criteria
+  + andPasswordNotEqualTo(String): Criteria
+  + andUsernameGreaterThan(String): Criteria
+  # addCriterion(String, Object, Object, String): void
+  + andPasswordLessThan(String): Criteria
+  + andPasswordLessThanOrEqualTo(String): Criteria
+  + andIdGreaterThanOrEqualTo(Integer): Criteria
+  + andIdNotEqualTo(Integer): Criteria
+  + andUsernameNotBetween(String, String): Criteria
+  + andUsernameIsNotNull(): Criteria
+  + andTypeBetween(String, String): Criteria
+  + andPasswordBetween(String, String): Criteria
+  + andIdEqualTo(Integer): Criteria
+  + andIdNotBetween(Integer, Integer): Criteria
+  + andPasswordNotIn(List<String>): Criteria
+  + andIdIsNull(): Criteria
+  + andPasswordGreaterThanOrEqualTo(String): Criteria
+  + andTypeEqualTo(String): Criteria
+  + andTypeIsNotNull(): Criteria
+  + andIdIsNotNull(): Criteria
+  + andUsernameNotEqualTo(String): Criteria
+  + andPasswordGreaterThan(String): Criteria
+  # addCriterion(String): void
+  + andPasswordLike(String): Criteria
+  + andTypeGreaterThan(String): Criteria
+  # addCriterion(String, Object, String): void
+  + andUsernameNotIn(List<String>): Criteria
+  + andTypeGreaterThanOrEqualTo(String): Criteria
+  + andIdLessThanOrEqualTo(Integer): Criteria
+  + andTypeNotEqualTo(String): Criteria
+  + andTypeLessThanOrEqualTo(String): Criteria
+  + andTypeIsNull(): Criteria
+  + andIdGreaterThan(Integer): Criteria
+  + andTypeIn(List<String>): Criteria
+  + andPasswordNotLike(String): Criteria
+  + andTypeNotIn(List<String>): Criteria
+  + andTypeNotLike(String): Criteria
+  + andTypeLessThan(String): Criteria
+  + andUsernameLessThan(String): Criteria
+  + andUsernameIn(List<String>): Criteria
+  + andUsernameEqualTo(String): Criteria
+  + andPasswordEqualTo(String): Criteria
+  + andUsernameIsNull(): Criteria
+  + andPasswordIsNotNull(): Criteria
+  + andIdNotIn(List<Integer>): Criteria
+  + andPasswordIn(List<String>): Criteria
+  + andIdBetween(Integer, Integer): Criteria
+  + andUsernameLessThanOrEqualTo(String): Criteria
+  + andUsernameGreaterThanOrEqualTo(String): Criteria
+  + andUsernameLike(String): Criteria
+  + andTypeLike(String): Criteria
+  + andPasswordNotBetween(String, String): Criteria
+  + andPasswordIsNull(): Criteria
+  + andTypeNotBetween(String, String): Criteria
+   allCriteria: List<Criterion>
+   criteria: List<Criterion>
+   valid: boolean
+}
+class Hetong {
+  + Hetong(): 
+  - chuzu: String
+  - fromdate: String
+  - address: String
+  - zuke_idcard: String
+  - payday: Integer
+  - house_id: String
+  - todate: String
+  - zuke: String
+  - chuzu_idcard: String
+  - id: Integer
+  - price: double
+   chuzu_idcard: String
+   zuke_idcard: String
+   zuke: String
+   price: double
+   house_id: String
+   address: String
+   payday: Integer
+   id: Integer
+   chuzu: String
+   todate: String
+   fromdate: String
+}
+class Houselist {
+  + Houselist(): 
+  - address: String
+  - area: double
+  - status: String
+  - img: String
+  - landlady: String
+  - introduce: String
+  - id: Integer
+  - houseid: String
+  - price: double
+  - file: MultipartFile
+  + toString(): String
+   landlady: String
+   area: double
+   introduce: String
+   img: String
+   houseid: String
+   file: MultipartFile
+   price: double
+   status: String
+   address: String
+   id: Integer
+}
+class Paid {
+  + Paid(): 
+  - date: Date
+  - id: Integer
+  - address: String
+  - house_id: String
+  - price: Double
+  - userlist_id: Integer
+  - status: String
+  - paydate: String
+  - name: String
+   name: String
+   userlist_id: Integer
+   paydate: String
+   status: String
+   price: Double
+   house_id: String
+   address: String
+   id: Integer
+   date: Date
+}
+class QueryVo {
+  + QueryVo(): 
+  - todate: String
+  - fromdate: String
+  - userlist_id: Integer
+  - zuname: String
+  + toString(): String
+   userlist_id: Integer
+   todate: String
+   zuname: String
+   fromdate: String
+}
+class Schedule {
+  + Schedule(): 
+  - content: String
+  - id: Integer
+  - date: String
+   id: Integer
+   content: String
+   date: String
+}
+class Solve {
+  + Solve(): 
+  - userlist_id: Integer
+  - date: Date
+  - detail: String
+  - status: String
+  - name: String
+  - address: String
+  - id: Integer
+  - house_id: String
+   name: String
+   detail: String
+   userlist_id: Integer
+   status: String
+   house_id: String
+   address: String
+   id: Integer
+   date: Date
+}
+class Topaid {
+  + Topaid(): 
+  - house_id: String
+  - address: String
+  - userlist_id: Integer
+  - date: Date
+  - id: Integer
+  - name: String
+  - price: Double
+  - status: String
+   name: String
+   userlist_id: Integer
+   status: String
+   price: Double
+   house_id: String
+   address: String
+   id: Integer
+   date: Date
+}
+class User {
+  + User(): 
+  - password: String
+  - id: Integer
+  - username: String
+  - type: String
+  + toString(): String
+   password: String
+   type: String
+   username: String
+   id: Integer
+}
+class UserExample {
+  + UserExample(): 
+  # oredCriteria: List<Criteria>
+  # distinct: boolean
+  # orderByClause: String
+  + or(): Criteria
+  + or(Criteria): void
+  + clear(): void
+  + createCriteria(): Criteria
+  # createCriteriaInternal(): Criteria
+   oredCriteria: List<Criteria>
+   distinct: boolean
+   orderByClause: String
+}
+class Userlist {
+  + Userlist(): 
+  - apply: List<Apply>
+  - user: User
+  - user_id: Integer
+  - idcard: String
+  - zulist: List<Zulist>
+  - name: String
+  - applyout: List<Applyout>
+  - id: Integer
+  - phone: String
+  - checkout: List<Checkout>
+  + toString(): String
+   name: String
+   zulist: List<Zulist>
+   phone: String
+   applyout: List<Applyout>
+   idcard: String
+   apply: List<Apply>
+   checkout: List<Checkout>
+   id: Integer
+   user: User
+   user_id: Integer
+}
+class Wrong {
+  + Wrong(): 
+  - date: Date
+  - detail: String
+  - name: String
+  - id: Integer
+  - house_id: String
+  - status: String
+  - userlist_id: Integer
+  - address: String
+   name: String
+   detail: String
+   userlist_id: Integer
+   status: String
+   house_id: String
+   address: String
+   id: Integer
+   date: Date
+}
+class Zulist {
+  + Zulist(): 
+  - address: String
+  - contract_id: Integer
+  - zid: Integer
+  - userlist_id: Integer
+  - price: Double
+  - house_id: String
+  - userlist: Userlist
+   userlist: Userlist
+   userlist_id: Integer
+   price: Double
+   house_id: String
+   address: String
+   contract_id: Integer
+   zid: Integer
+}
+
+Criteria           -[#000082,plain]-^  GeneratedCriteria 
+Criteria           +-[#820000,plain]-  UserExample       
+Criterion          +-[#820000,plain]-  UserExample       
+GeneratedCriteria  +-[#820000,plain]-  UserExample       
+@enduml
